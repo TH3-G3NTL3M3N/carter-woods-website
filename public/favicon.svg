@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
+  <!-- Trunk -->
+  <line x1="16" y1="28" x2="16" y2="23" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <!-- Tree top peak -->
+  <path d="M14 10 Q16 6 18 10" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Branch 1 — narrow -->
+  <path d="M11 14 Q16 11 21 14" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Branch 2 — medium -->
+  <path d="M9 18.5 Q16 14.5 23 18.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Branch 3 — widest -->
+  <path d="M7 23 Q16 18 25 23" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>
