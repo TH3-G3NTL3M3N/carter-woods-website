@@ -126,7 +126,7 @@ export function createScrollReveals(container: HTMLElement) {
   registerGSAP();
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    container.querySelectorAll(".gsap-reveal, .gsap-reveal-left, .gsap-reveal-up").forEach((el) => {
+    container.querySelectorAll(".gsap-reveal, .gsap-reveal-left, .gsap-reveal-up, .gsap-stagger-child").forEach((el) => {
       gsap.set(el, { opacity: 1, y: 0, x: 0, filter: "blur(0px)", clipPath: "inset(0% 0% 0% 0%)" });
     });
     return;
@@ -143,7 +143,7 @@ export function createScrollReveals(container: HTMLElement) {
       ease: "power3.out",
       scrollTrigger: {
         trigger: el,
-        start: "top 85%",
+        start: "top 95%",
         once: true,
       },
     });
@@ -191,7 +191,7 @@ export function createScrollReveals(container: HTMLElement) {
       ease: "power3.out",
       scrollTrigger: {
         trigger: parent,
-        start: "top 80%",
+        start: "top 95%",
         once: true,
       },
     });

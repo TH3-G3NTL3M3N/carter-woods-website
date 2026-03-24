@@ -1,46 +1,48 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { createScrollReveals } from "@/lib/animations";
-
 const SPONSORS = [
-  "Giant", "Shimano", "FOX", "Maxxis", "100%", "CADEX", "CushCore",
+  "Giant", "Shimano", "FOX", "Maxxis", "100%", "CushCore", "Cuore", "Stan's NoTubes", "MRP", "ODI", "Thule", "Park Tool", "Finish Line",
 ];
 
 export default function ThePartners() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    createScrollReveals(el);
-  }, []);
+  // Triple for seamless loop
+  const marqueeItems = [...SPONSORS, ...SPONSORS, ...SPONSORS];
 
   return (
     <section
       id="the-partners"
-      ref={sectionRef}
       className="relative bg-bg py-20 md:py-32"
     >
       <div className="px-8 md:px-16 lg:px-24 max-w-5xl mx-auto">
-        <p className="gsap-reveal-up font-mono text-[9px] tracking-[4px] uppercase text-accent mb-12 text-center">
+        <p className="font-mono text-[9px] tracking-[4px] uppercase text-accent mb-16 text-center">
           05 — The Partners
         </p>
+      </div>
 
-        <div className="gsap-stagger-parent flex flex-wrap justify-center gap-4 md:gap-6 mb-20">
-          {SPONSORS.map((sponsor) => (
-            <div
-              key={sponsor}
-              className="gsap-stagger-child px-5 py-3 md:px-7 md:py-4 border border-white/[0.06] rounded-lg
-                text-text-faint font-bold text-xs md:text-sm tracking-wider
-                hover:border-accent/20 hover:text-white/60 transition-all duration-300"
+      {/* Marquee with CSS mask fade — Clerk/Vercel style */}
+      <div
+        className="relative overflow-hidden mb-20 max-w-4xl mx-auto"
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+        }}
+      >
+        <div className="flex animate-marquee whitespace-nowrap items-center">
+          {marqueeItems.map((sponsor, i) => (
+            <span
+              key={`m-${i}`}
+              className="mx-6 md:mx-8 text-xl md:text-2xl font-bold tracking-[5px] text-white/40 cursor-default select-none"
+              style={{ fontFamily: "var(--font-jetbrains), monospace" }}
             >
               {sponsor.toUpperCase()}
-            </div>
+            </span>
           ))}
         </div>
+      </div>
 
-        <footer className="gsap-reveal-up border-t border-white/[0.06] pt-10">
+      {/* Footer */}
+      <div className="px-8 md:px-16 lg:px-24 max-w-5xl mx-auto">
+        <footer className="border-t border-white/[0.06] pt-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
               <div className="font-display text-2xl text-white tracking-tight">
