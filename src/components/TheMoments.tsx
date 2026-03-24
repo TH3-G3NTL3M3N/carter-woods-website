@@ -42,6 +42,12 @@ const PHOTOS = [
     caption: "Leading the Pack",
     className: "",
   },
+  {
+    src: "/images/portrait-giant-kit.jpg",
+    alt: "Carter Woods close-up portrait in Giant team kit, muddy face after a race",
+    caption: "Race Face",
+    className: "",
+  },
 ];
 
 export default function TheMoments() {
