@@ -44,7 +44,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden"
+      className="relative h-dvh w-full overflow-hidden"
     >
       {/* Background photo — parallax target */}
       <div className="hero-bg absolute inset-0">
@@ -66,7 +66,7 @@ export default function Hero() {
 
 
       {/* Content — parallax target (moves faster) */}
-      <div className="hero-content relative z-10 flex flex-col items-center justify-between h-full px-6 md:px-12 pt-6 pb-[env(safe-area-inset-bottom,12px)] md:py-16">
+      <div className="hero-content relative z-10 flex flex-col items-center justify-between h-dvh px-6 md:px-12 pt-6 pb-6 md:py-16">
         {/* Top spacer */}
         <div />
 
