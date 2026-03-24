@@ -66,10 +66,7 @@ export default function Hero() {
 
 
       {/* Content — parallax target (moves faster) */}
-      <div className="hero-content relative z-10 flex flex-col items-center justify-between h-full px-6 md:px-12 py-6 pb-8 md:py-16">
-        {/* Top spacer */}
-        <div />
-
+      <div className="hero-content relative z-10 flex flex-col items-center justify-center gap-8 md:gap-12 h-full px-6 md:px-12">
         {/* Center: name + subtitle */}
         <div className="text-center">
           <p className="hero-subtitle font-mono text-[10px] md:text-xs tracking-[6px] uppercase text-accent font-bold mb-4">
