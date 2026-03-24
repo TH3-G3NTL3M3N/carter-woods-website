@@ -69,6 +69,20 @@ export default function ThePartners() {
           </div>
 
         </footer>
+
+        <div className="py-5 text-center mt-16">
+          <p className="text-white text-sm m-0">
+            built by{" "}
+            <a
+              href="https://s1m.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-bold no-underline border-b border-white hover:opacity-70 transition-opacity"
+            >
+              s1m
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   );
