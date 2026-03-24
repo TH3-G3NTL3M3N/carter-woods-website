@@ -97,9 +97,6 @@ export default function TheNumbers() {
                 }`}
               >
                 {item.text}
-                {item.highlight && (
-                  <span className="text-accent ml-1">★</span>
-                )}
               </span>
             </div>
           ))}
