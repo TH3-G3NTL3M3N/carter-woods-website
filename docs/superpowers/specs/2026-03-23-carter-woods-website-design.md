@@ -185,9 +185,66 @@ All 6 images are Instagram-resolution JPEGs at 1080px wide, ~720px tall, 114–2
 
 ## Responsive Behavior
 
-- **Desktop (1024px+):** Full experience with side rail nav, split layouts, masonry grid
-- **Tablet (768–1023px):** Side rail collapses to numbered dots only. Split layouts stack. Masonry becomes 2-column
-- **Mobile (< 768px):** Side rail becomes bottom dots or hidden. All layouts stack vertically. Hero text scales down. Gallery becomes single-column with swipe hints. Animations simplified (reduce parallax, remove rotation)
+Mobile is the primary viewing context — most fans will tap this link from Instagram on their phone. The mobile experience must be equally jaw-dropping, not a degraded desktop version.
+
+### Design Principles (All Breakpoints)
+- **Mobile-first implementation** — design for small screens first, enhance for larger
+- **Touch-native interactions** — no hover-dependent features without touch fallbacks
+- **Performance budget stricter on mobile** — reduce animation complexity, not visual impact
+- **Full-bleed imagery** — photos should feel even more immersive on mobile (edge-to-edge)
+
+### Desktop (1024px+)
+- Full experience: side rail nav, split layouts, masonry grid
+- All animations active: parallax, scroll triggers, hover effects
+- Side rail with numbered labels + glowing indicator
+
+### Tablet (768–1023px)
+- Side rail collapses to numbered dots only (labels appear on tap)
+- Split layouts stack vertically with photo on top
+- Masonry gallery becomes 2-column grid
+- Parallax reduced to 50% intensity
+
+### Mobile (< 768px)
+
+**Navigation:**
+- Side rail becomes a row of small numbered dots at the bottom of the viewport (fixed)
+- Active dot glows orange, tapping a dot smooth-scrolls to that section
+- Dots auto-hide after 3 seconds of no interaction, reappear on scroll direction change
+
+**Hero:**
+- Name scales to fit viewport width (fluid typography via `clamp()`)
+- Photo crops tighter using `object-position: center 40%` to keep Carter's upper body centered
+- Stats row wraps to 3 across, smaller text
+- Speed lines still animate but fewer of them
+- "Scroll to explore" replaced with a subtle bounce chevron
+
+**Section layouts (The Roots, The Machine):**
+- All split layouts become full-width stacked: photo on top (16:9 crop, edge-to-edge), text below
+- Photos get extra vertical breathing room — they should feel cinematic, not cramped
+- Section labels and headlines use fluid sizing (`clamp()` between mobile and desktop values)
+
+**The Numbers:**
+- Stat cards become a horizontal scroll strip (snap scrolling) instead of a 3-column grid — swipe between cards
+- Each card takes ~85% viewport width for a "card stack" feel
+- Timeline stays vertical, slightly tighter spacing
+
+**The Moments (Gallery):**
+- Becomes a single-column vertical feed — each photo full-width with rounded corners
+- Photos reveal one-by-one on scroll with a scale-up animation
+- No masonry on mobile — every photo gets its own moment
+- Optional: subtle horizontal swipe carousel as an alternative (decide at implementation)
+
+**The Partners:**
+- Logo cards wrap into a 3×2 grid or horizontal scroll strip
+- Footer stacks: name/team on top, social icons below, centered
+
+**Animation adjustments for mobile:**
+- Disable parallax entirely (causes jank on mobile Safari)
+- Keep scroll-triggered reveals (fade + slide) — these work great on mobile
+- Stats count-up animation stays — it's lightweight
+- Remove rotation from gallery reveals
+- Reduce GSAP usage — prefer CSS `@keyframes` and `IntersectionObserver` on mobile
+- Respect `prefers-reduced-motion` — disable all animations if the user has this OS setting on
 
 ## Tech Stack
 
