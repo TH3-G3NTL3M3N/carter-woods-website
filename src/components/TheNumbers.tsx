@@ -61,7 +61,7 @@ export default function TheNumbers() {
           {STATS.map((stat) => (
             <div
               key={stat.label}
-              className="gsap-stagger-child flex-shrink-0 w-[75vw] md:w-auto snap-center bg-accent-dim/40 border border-accent-dim rounded-lg p-6 md:p-8 text-center"
+              className="gsap-stagger-child flex-shrink-0 w-[75vw] md:w-auto snap-center bg-[#111] border border-accent/15 rounded-lg p-6 md:p-8 text-center"
             >
               <div
                 className="font-display text-5xl md:text-6xl text-white"
