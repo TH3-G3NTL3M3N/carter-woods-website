@@ -15,7 +15,7 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://carterwoods.cc";
+const siteUrl = "https://carterwoods.ca";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
