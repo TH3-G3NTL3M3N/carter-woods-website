@@ -64,17 +64,14 @@ export default function Hero() {
       {/* Radial glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center_60%,rgba(255,69,0,0.08),transparent_60%)]" />
 
-      {/* Speed lines */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="speed-line absolute top-[30%] opacity-40" />
-        <div className="speed-line absolute top-[50%] opacity-25" style={{ animationDelay: "-3s" }} />
-        <div className="speed-line absolute top-[70%] opacity-15 hidden md:block" style={{ animationDelay: "-6s" }} />
-      </div>
 
       {/* Content — parallax target (moves faster) */}
-      <div className="hero-content relative z-10 flex flex-col items-center justify-center h-full px-6 md:px-12">
+      <div className="hero-content relative z-10 flex flex-col items-center justify-between h-full px-6 md:px-12 py-10 md:py-16">
+        {/* Top spacer */}
+        <div />
+
         {/* Center: name + subtitle */}
-        <div className="text-center mb-8">
+        <div className="text-center">
           <p className="hero-subtitle font-mono text-[10px] md:text-xs tracking-[6px] uppercase text-accent font-bold mb-4">
             Canadian XC Mountain Bike
           </p>
@@ -85,12 +82,18 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Stats — perfectly centered */}
+        {/* Stats — at the bottom */}
         <div className="flex items-center justify-center gap-10 md:gap-14">
           <div className="hero-stat text-center">
             <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="5" data-suffix="">5</div>
             <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
               World Cup Wins
+            </div>
+          </div>
+          <div className="hero-stat text-center">
+            <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="14" data-suffix="">14</div>
+            <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
+              WC Podiums
             </div>
           </div>
           <div className="hero-stat text-center">
@@ -108,13 +111,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll hint — fixed at bottom, outside content parallax */}
-      <div className="hero-scroll-hint absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-        <p className="hidden md:block text-[10px] text-white/20 tracking-[3px] uppercase">
-          Scroll
-        </p>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-accent/50 to-transparent animate-pulse" />
-      </div>
     </section>
   );
 }

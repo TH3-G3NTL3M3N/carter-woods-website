@@ -43,14 +43,7 @@ export function createHeroTimeline(container: HTMLElement) {
       },
       "-=0.3"
     )
-    .from(
-      container.querySelector(".hero-scroll-hint"),
-      {
-        opacity: 0,
-        duration: 0.5,
-      },
-      "-=0.2"
-    );
+;
 
   // Hero parallax: photo moves slower, content moves faster, with blur
   ScrollTrigger.create({
