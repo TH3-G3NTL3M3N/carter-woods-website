@@ -11,10 +11,11 @@ const STATS = [
 ];
 
 const TIMELINE = [
-  { year: "2018", text: "Junior National Champion — the beginning", highlight: false },
-  { year: "2021", text: "First Canadian to win U23 XCO World Cup", highlight: true },
-  { year: "2023", text: "Elite National Champion — double XCO + XCC", highlight: false },
-  { year: "2025", text: "2nd XCC World Cup overall — elite breakthrough", highlight: false },
+  { year: "2018", text: "2x Junior National Champion", highlight: false },
+  { year: "2021", text: "First Canadian to win a U23 XCO World Cup — back-to-back wins", highlight: true },
+  { year: "2022", text: "U23 World Cup win in Andorra — 3 career World Cup victories", highlight: false },
+  { year: "2023", text: "Elite National Champion — 7 World Cup wins, 2nd U23 XCC overall", highlight: false },
+  { year: "2024", text: "First full Elite season — UCI ranked #22", highlight: false },
   { year: "2026", text: "The chapter being written now", highlight: false },
 ];
 
