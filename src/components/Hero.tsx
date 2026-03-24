@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
 import { createHeroTimeline } from "@/lib/animations";
 
 export default function Hero() {
@@ -17,6 +18,23 @@ export default function Hero() {
     if (prefersReduced) return;
 
     const tl = createHeroTimeline(el);
+
+    // Count up hero stats
+    el.querySelectorAll(".hero-stat-num").forEach((statEl) => {
+      const target = parseInt(statEl.getAttribute("data-target") || "0", 10);
+      const suffix = statEl.getAttribute("data-suffix") || "";
+      const obj = { val: 0 };
+      gsap.to(obj, {
+        val: target,
+        duration: 1.5,
+        delay: 1,
+        ease: "power2.out",
+        onUpdate: () => {
+          statEl.textContent = Math.round(obj.val).toString() + suffix;
+        },
+      });
+    });
+
     return () => {
       tl.kill();
     };
@@ -73,19 +91,19 @@ export default function Hero() {
 
           <div className="flex gap-8 md:gap-10">
             <div className="hero-stat text-center">
-              <div className="font-display text-3xl md:text-4xl text-white">5</div>
+              <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="5" data-suffix="">5</div>
               <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
                 World Cup Wins
               </div>
             </div>
             <div className="hero-stat text-center">
-              <div className="font-display text-3xl md:text-4xl text-white">6x</div>
+              <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="6" data-suffix="x">6x</div>
               <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
                 National Champ
               </div>
             </div>
             <div className="hero-stat text-center">
-              <div className="font-display text-3xl md:text-4xl text-white">24</div>
+              <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="24" data-suffix="">24</div>
               <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
                 Years Old
               </div>

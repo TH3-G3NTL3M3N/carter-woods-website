@@ -87,8 +87,8 @@ export default function TheMoments() {
             <div
               key={photo.src}
               className={`gallery-item relative overflow-hidden rounded-md group cursor-pointer
-                opacity-0 scale-95 transition-all duration-700 ease-out
-                [&.visible]:opacity-100 [&.visible]:scale-100
+                opacity-0 scale-95 rotate-1 transition-all duration-700 ease-out
+                [&.visible]:opacity-100 [&.visible]:scale-100 [&.visible]:rotate-0
                 ${photo.className}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
