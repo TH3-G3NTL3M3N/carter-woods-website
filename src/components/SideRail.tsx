@@ -30,7 +30,7 @@ export default function SideRail() {
       >
         <div
           className="absolute -left-4 w-[2px] h-12 bg-accent rounded-full shadow-[0_0_12px_rgba(255,69,0,0.5)] transition-all duration-300"
-          style={{ top: `${Math.max(0, activeSectionIndex) * 60}px` }}
+          style={{ top: `${Math.max(0, activeSectionIndex) * 64}px` }}
         />
 
         {SECTIONS.map((section, i) => (
@@ -41,10 +41,10 @@ export default function SideRail() {
               activeSectionIndex === i ? "opacity-100" : "opacity-30 hover:opacity-60"
             }`}
           >
-            <div className="font-mono text-[9px] tracking-[3px] uppercase text-accent">
+            <div className="font-mono text-[10px] tracking-[3px] uppercase text-accent font-bold">
               {section.num}
             </div>
-            <div className="font-sans text-[11px] font-semibold tracking-[2px] uppercase text-white">
+            <div className="font-sans text-[13px] font-bold tracking-[2px] uppercase text-white">
               {section.label}
             </div>
           </button>

@@ -74,7 +74,7 @@ export default function Hero() {
       {/* Content — parallax target (moves faster) */}
       <div className="hero-content relative z-10 flex flex-col items-center justify-center h-full px-6 md:px-12">
         {/* Center: name + subtitle */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <p className="hero-subtitle font-mono text-[10px] md:text-xs tracking-[6px] uppercase text-accent font-bold mb-4">
             Canadian XC Mountain Bike
           </p>
@@ -88,20 +88,20 @@ export default function Hero() {
         {/* Stats — perfectly centered */}
         <div className="flex items-center justify-center gap-10 md:gap-14">
           <div className="hero-stat text-center">
-            <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="5" data-suffix="">5</div>
-            <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
+            <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="5" data-suffix="">5</div>
+            <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
               World Cup Wins
             </div>
           </div>
           <div className="hero-stat text-center">
-            <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="6" data-suffix="x">6x</div>
-            <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
+            <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="6" data-suffix="x">6x</div>
+            <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
               National Champ
             </div>
           </div>
           <div className="hero-stat text-center">
-            <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="24" data-suffix="">24</div>
-            <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
+            <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="24" data-suffix="">24</div>
+            <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
               Years Old
             </div>
           </div>
