@@ -58,11 +58,11 @@ export default function TheNumbers() {
           02 — The Numbers
         </p>
 
-        <div className="gsap-stagger-parent flex md:grid md:grid-cols-3 gap-5 mb-16 overflow-x-auto snap-x snap-mandatory pb-4 md:pb-0 -mx-8 px-8 md:mx-0 md:px-0">
+        <div className="gsap-stagger-parent grid grid-cols-3 gap-3 md:gap-5 mb-16">
           {STATS.map((stat) => (
             <div
               key={stat.label}
-              className="gsap-stagger-child flex-shrink-0 w-[75vw] md:w-auto snap-center p-6 md:p-8 text-center"
+              className="gsap-stagger-child p-4 md:p-8 text-center"
             >
               <div
                 className="font-display text-5xl md:text-6xl text-white"

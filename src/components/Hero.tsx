@@ -66,7 +66,7 @@ export default function Hero() {
 
 
       {/* Content — parallax target (moves faster) */}
-      <div className="hero-content relative z-10 flex flex-col items-center justify-between h-full px-6 md:px-12 py-10 md:py-16">
+      <div className="hero-content relative z-10 flex flex-col items-center justify-between h-full px-6 md:px-12 py-6 pb-8 md:py-16">
         {/* Top spacer */}
         <div />
 
@@ -83,7 +83,7 @@ export default function Hero() {
         </div>
 
         {/* Stats — at the bottom */}
-        <div className="flex items-center justify-center gap-10 md:gap-14">
+        <div className="flex items-center justify-center gap-6 md:gap-14">
           <div className="hero-stat text-center">
             <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="5" data-suffix="">5</div>
             <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
