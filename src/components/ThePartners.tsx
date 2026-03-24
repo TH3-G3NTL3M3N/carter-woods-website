@@ -53,36 +53,19 @@ export default function ThePartners() {
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <a
-                href="https://www.instagram.com/carterwoodsmtb/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-10 h-10 border border-accent/20 rounded-full flex items-center justify-center
-                  text-accent text-sm hover:bg-accent/10 hover:shadow-[0_0_12px_rgba(255,69,0,0.3)]
-                  transition-all duration-300"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-              </a>
-              <a
-                href="https://x.com/carterwoodsrace"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X (Twitter)"
-                className="w-10 h-10 border border-accent/20 rounded-full flex items-center justify-center
-                  text-accent text-sm hover:bg-accent/10 hover:shadow-[0_0_12px_rgba(255,69,0,0.3)]
-                  transition-all duration-300"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-            </div>
+            <a
+              href="https://www.instagram.com/carterwoodsmtb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-white hover:text-accent transition-colors duration-300"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
           </div>
 
         </footer>
