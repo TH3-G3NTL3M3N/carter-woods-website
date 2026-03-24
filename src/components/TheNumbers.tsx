@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { createCountUp } from "@/lib/animations";
+import { createCountUp, createScrollReveals } from "@/lib/animations";
 
 const STATS = [
   { value: 5, label: "World Cup Wins" },
@@ -29,26 +29,12 @@ export default function TheNumbers() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    el.querySelectorAll(".reveal").forEach((node) => {
-      if (prefersReduced) node.classList.add("visible");
-      else observer.observe(node);
-    });
+    createScrollReveals(el);
 
     if (!prefersReduced) {
       const statEls = el.querySelectorAll("[data-target]");
       createCountUp(statEls, el);
     }
-
-    return () => observer.disconnect();
   }, []);
 
   return (
@@ -67,15 +53,15 @@ export default function TheNumbers() {
       />
 
       <div className="relative z-10 w-full px-8 md:px-16 lg:px-24 max-w-5xl mx-auto">
-        <p className="reveal font-mono text-[9px] tracking-[4px] uppercase text-accent mb-10">
+        <p className="gsap-reveal-up font-mono text-[9px] tracking-[4px] uppercase text-accent mb-10">
           02 — The Numbers
         </p>
 
-        <div className="flex md:grid md:grid-cols-3 gap-5 mb-16 overflow-x-auto snap-x snap-mandatory pb-4 md:pb-0 -mx-8 px-8 md:mx-0 md:px-0">
+        <div className="gsap-stagger-parent flex md:grid md:grid-cols-3 gap-5 mb-16 overflow-x-auto snap-x snap-mandatory pb-4 md:pb-0 -mx-8 px-8 md:mx-0 md:px-0">
           {STATS.map((stat) => (
             <div
               key={stat.label}
-              className="reveal flex-shrink-0 w-[75vw] md:w-auto snap-center bg-accent-dim/40 border border-accent-dim rounded-lg p-6 md:p-8 text-center"
+              className="gsap-stagger-child flex-shrink-0 w-[75vw] md:w-auto snap-center bg-accent-dim/40 border border-accent-dim rounded-lg p-6 md:p-8 text-center"
             >
               <div
                 className="font-display text-5xl md:text-6xl text-white"
@@ -90,12 +76,11 @@ export default function TheNumbers() {
           ))}
         </div>
 
-        <div className="border-l-2 border-accent/20 pl-6 md:pl-8 flex flex-col gap-4">
-          {TIMELINE.map((item, i) => (
+        <div className="gsap-stagger-parent border-l-2 border-accent/20 pl-6 md:pl-8 flex flex-col gap-4">
+          {TIMELINE.map((item) => (
             <div
               key={item.year}
-              className="reveal flex items-baseline gap-4"
-              style={{ transitionDelay: `${i * 100}ms` }}
+              className="gsap-stagger-child flex items-baseline gap-4"
             >
               <span
                 className={`font-mono text-sm font-bold min-w-[3rem] ${

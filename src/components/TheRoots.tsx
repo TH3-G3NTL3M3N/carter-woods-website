@@ -2,40 +2,21 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { createScrollReveals, createImageParallax } from "@/lib/animations";
 
 export default function TheRoots() {
   const sectionRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) {
-      el.querySelectorAll(".reveal-left, .reveal").forEach((node) =>
-        node.classList.add("visible")
-      );
-      return;
+    createScrollReveals(el);
+
+    if (imageRef.current) {
+      createImageParallax(imageRef.current, el);
     }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    el.querySelectorAll(".reveal-left, .reveal").forEach((node) =>
-      observer.observe(node)
-    );
-
-    return () => observer.disconnect();
   }, []);
 
   return (
@@ -47,7 +28,7 @@ export default function TheRoots() {
       <div className="w-full flex flex-col md:flex-row items-stretch">
         {/* Text — left on desktop, below on mobile */}
         <div className="flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-12 md:py-0 order-2 md:order-1">
-          <div className="reveal-left">
+          <div className="gsap-reveal-left">
             <p className="font-mono text-[9px] tracking-[4px] uppercase text-accent mb-4">
               01 — The Roots
             </p>
@@ -67,15 +48,17 @@ export default function TheRoots() {
         </div>
 
         {/* Photo — right on desktop, top on mobile */}
-        <div className="flex-1 relative min-h-[50vh] md:min-h-screen order-1 md:order-2">
-          <div className="reveal absolute inset-0">
-            <Image
-              src="/images/celebration-wheelie.jpg"
-              alt="Carter Woods celebrating with a wheelie at the finish line, crowd cheering"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+        <div className="flex-1 relative min-h-[50vh] md:min-h-screen order-1 md:order-2 overflow-hidden">
+          <div className="gsap-image-wipe absolute inset-0">
+            <div ref={imageRef} className="absolute inset-0">
+              <Image
+                src="/images/celebration-wheelie.jpg"
+                alt="Carter Woods celebrating with a wheelie at the finish line, crowd cheering"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-bg via-bg/40 to-transparent" />
           </div>
         </div>

@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { registerGSAP } from "@/lib/animations";
 
 const PHOTOS = [
   {
@@ -49,25 +51,52 @@ export default function TheMoments() {
     const el = sectionRef.current;
     if (!el) return;
 
+    registerGSAP();
+
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.1 }
-    );
+    if (prefersReduced) {
+      el.querySelectorAll(".gallery-item").forEach((item) => {
+        gsap.set(item, { opacity: 1, y: 0, scale: 1, rotateZ: 0, filter: "blur(0px)" });
+      });
+      return;
+    }
 
-    el.querySelectorAll(".gallery-item").forEach((node) => {
-      if (prefersReduced) node.classList.add("visible");
-      else observer.observe(node);
+    // Section title
+    gsap.from(el.querySelector(".section-title"), {
+      opacity: 0,
+      y: 40,
+      filter: "blur(6px)",
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%",
+        once: true,
+      },
     });
 
-    return () => observer.disconnect();
+    // Gallery items with staggered 3D-like entrance
+    const items = el.querySelectorAll(".gallery-item");
+    items.forEach((item, i) => {
+      gsap.from(item, {
+        opacity: 0,
+        y: 80,
+        scale: 0.9,
+        rotateZ: window.innerWidth >= 768 ? (i % 2 === 0 ? 2 : -2) : 0,
+        filter: "blur(8px)",
+        duration: 0.9,
+        delay: i * 0.08,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 90%",
+          once: true,
+        },
+      });
+    });
   }, []);
 
   return (
@@ -77,20 +106,16 @@ export default function TheMoments() {
       className="relative bg-bg py-20 md:py-32"
     >
       <div className="px-8 md:px-16 lg:px-24 max-w-6xl mx-auto">
-        <p className="font-mono text-[9px] tracking-[4px] uppercase text-accent mb-10">
+        <p className="section-title font-mono text-[9px] tracking-[4px] uppercase text-accent mb-10">
           04 — The Moments
         </p>
 
         {/* Desktop: masonry grid */}
         <div className="hidden md:grid grid-cols-3 grid-rows-[auto_auto_auto] gap-3">
-          {PHOTOS.map((photo, i) => (
+          {PHOTOS.map((photo) => (
             <div
               key={photo.src}
-              className={`gallery-item relative overflow-hidden rounded-md group cursor-pointer
-                opacity-0 scale-95 rotate-1 transition-all duration-700 ease-out
-                [&.visible]:opacity-100 [&.visible]:scale-100 [&.visible]:rotate-0
-                ${photo.className}`}
-              style={{ transitionDelay: `${i * 100}ms` }}
+              className={`gallery-item relative overflow-hidden rounded-md group cursor-pointer ${photo.className}`}
             >
               <div className={`relative ${photo.className.includes("row-span-2") ? "h-[500px]" : photo.className.includes("col-span-2") ? "h-[250px]" : "h-[240px]"}`}>
                 <Image
@@ -112,13 +137,10 @@ export default function TheMoments() {
 
         {/* Mobile: single column feed */}
         <div className="flex md:hidden flex-col gap-4">
-          {PHOTOS.map((photo, i) => (
+          {PHOTOS.map((photo) => (
             <div
               key={photo.src}
-              className="gallery-item relative overflow-hidden rounded-lg
-                opacity-0 scale-95 transition-all duration-700 ease-out
-                [&.visible]:opacity-100 [&.visible]:scale-100"
-              style={{ transitionDelay: `${i * 80}ms` }}
+              className="gallery-item relative overflow-hidden rounded-lg"
             >
               <div className="relative aspect-[3/2]">
                 <Image

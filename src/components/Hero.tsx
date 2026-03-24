@@ -27,7 +27,7 @@ export default function Hero() {
       gsap.to(obj, {
         val: target,
         duration: 1.5,
-        delay: 1,
+        delay: 1.2,
         ease: "power2.out",
         onUpdate: () => {
           statEl.textContent = Math.round(obj.val).toString() + suffix;
@@ -44,17 +44,19 @@ export default function Hero() {
     <section
       id="hero"
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden flex flex-col justify-between"
+      className="relative h-screen w-full overflow-hidden"
     >
-      {/* Background photo */}
-      <Image
-        src="/images/hero-albstadt.jpg"
-        alt="Carter Woods crossing the finish line at Albstadt, arms spread wide, covered in mud"
-        fill
-        priority
-        className="object-cover object-[center_40%]"
-        sizes="100vw"
-      />
+      {/* Background photo — parallax target */}
+      <div className="hero-bg absolute inset-0">
+        <Image
+          src="/images/hero-albstadt.jpg"
+          alt="Carter Woods crossing the finish line at Albstadt, arms spread wide, covered in mud"
+          fill
+          priority
+          className="object-cover object-[center_40%]"
+          sizes="100vw"
+        />
+      </div>
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/50" />
@@ -69,11 +71,10 @@ export default function Hero() {
         <div className="speed-line absolute top-[70%] opacity-15 hidden md:block" style={{ animationDelay: "-6s" }} />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col justify-between h-full px-6 md:px-12 py-10 md:py-16">
-        <div />
-
-        <div className="text-center">
+      {/* Content — parallax target (moves faster) */}
+      <div className="hero-content relative z-10 flex flex-col items-center justify-center h-full px-6 md:px-12">
+        {/* Center: name + subtitle */}
+        <div className="text-center mb-16">
           <p className="hero-subtitle font-mono text-[10px] md:text-xs tracking-[6px] uppercase text-accent font-bold mb-4">
             Canadian XC Mountain Bike
           </p>
@@ -84,44 +85,35 @@ export default function Hero() {
           </h1>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-[11px] text-white/30 tracking-wide hidden md:block">
-            Cumberland, BC
-          </p>
-
-          <div className="flex gap-8 md:gap-10">
-            <div className="hero-stat text-center">
-              <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="5" data-suffix="">5</div>
-              <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
-                World Cup Wins
-              </div>
-            </div>
-            <div className="hero-stat text-center">
-              <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="6" data-suffix="x">6x</div>
-              <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
-                National Champ
-              </div>
-            </div>
-            <div className="hero-stat text-center">
-              <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="24" data-suffix="">24</div>
-              <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
-                Years Old
-              </div>
+        {/* Stats — perfectly centered */}
+        <div className="flex items-center justify-center gap-10 md:gap-14">
+          <div className="hero-stat text-center">
+            <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="5" data-suffix="">5</div>
+            <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
+              World Cup Wins
             </div>
           </div>
-
-          <div className="md:hidden animate-bounce">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-accent">
-              <path d="M4 7l6 6 6-6" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
+          <div className="hero-stat text-center">
+            <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="6" data-suffix="x">6x</div>
+            <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
+              National Champ
+            </div>
           </div>
-          <p
-            className="hidden md:block text-[11px] text-white/20 tracking-wide"
-            style={{ writingMode: "vertical-lr" }}
-          >
-            SCROLL TO EXPLORE
-          </p>
+          <div className="hero-stat text-center">
+            <div className="hero-stat-num font-display text-3xl md:text-4xl text-white" data-target="24" data-suffix="">24</div>
+            <div className="font-mono text-[8px] md:text-[9px] tracking-[2px] uppercase text-accent">
+              Years Old
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* Scroll hint — fixed at bottom, outside content parallax */}
+      <div className="hero-scroll-hint absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+        <p className="hidden md:block text-[10px] text-white/20 tracking-[3px] uppercase">
+          Scroll
+        </p>
+        <div className="w-[1px] h-8 bg-gradient-to-b from-accent/50 to-transparent animate-pulse" />
       </div>
     </section>
   );

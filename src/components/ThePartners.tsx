@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { createScrollReveals } from "@/lib/animations";
 
 const SPONSORS = [
   "Giant", "Shimano", "FOX", "Maxxis", "100%", "CADEX", "CushCore",
@@ -12,26 +13,7 @@ export default function ThePartners() {
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
-
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    el.querySelectorAll(".reveal").forEach((node) => {
-      if (prefersReduced) node.classList.add("visible");
-      else observer.observe(node);
-    });
-
-    return () => observer.disconnect();
+    createScrollReveals(el);
   }, []);
 
   return (
@@ -41,25 +23,24 @@ export default function ThePartners() {
       className="relative bg-bg py-20 md:py-32"
     >
       <div className="px-8 md:px-16 lg:px-24 max-w-5xl mx-auto">
-        <p className="reveal font-mono text-[9px] tracking-[4px] uppercase text-accent mb-12 text-center">
+        <p className="gsap-reveal-up font-mono text-[9px] tracking-[4px] uppercase text-accent mb-12 text-center">
           05 — The Partners
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-20">
-          {SPONSORS.map((sponsor, i) => (
+        <div className="gsap-stagger-parent flex flex-wrap justify-center gap-4 md:gap-6 mb-20">
+          {SPONSORS.map((sponsor) => (
             <div
               key={sponsor}
-              className="reveal px-5 py-3 md:px-7 md:py-4 border border-white/[0.06] rounded-lg
+              className="gsap-stagger-child px-5 py-3 md:px-7 md:py-4 border border-white/[0.06] rounded-lg
                 text-text-faint font-bold text-xs md:text-sm tracking-wider
                 hover:border-accent/20 hover:text-white/60 transition-all duration-300"
-              style={{ transitionDelay: `${i * 80}ms` }}
             >
               {sponsor.toUpperCase()}
             </div>
           ))}
         </div>
 
-        <footer className="border-t border-white/[0.06] pt-10">
+        <footer className="gsap-reveal-up border-t border-white/[0.06] pt-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
               <div className="font-display text-2xl text-white tracking-tight">
