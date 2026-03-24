@@ -66,7 +66,10 @@ export default function Hero() {
 
 
       {/* Content — parallax target (moves faster) */}
-      <div className="hero-content relative z-10 flex flex-col items-center justify-center gap-8 md:gap-12 h-full px-6 md:px-12">
+      <div className="hero-content relative z-10 flex flex-col items-center justify-between h-full px-6 md:px-12 pt-6 pb-[env(safe-area-inset-bottom,12px)] md:py-16">
+        {/* Top spacer */}
+        <div />
+
         {/* Center: name + subtitle */}
         <div className="text-center">
           <p className="hero-subtitle font-mono text-[10px] md:text-xs tracking-[6px] uppercase text-accent font-bold mb-4">
@@ -82,26 +85,26 @@ export default function Hero() {
         {/* Stats — at the bottom */}
         <div className="flex items-center justify-center gap-6 md:gap-14">
           <div className="hero-stat text-center">
-            <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="5" data-suffix="">5</div>
-            <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
+            <div className="hero-stat-num font-display text-2xl md:text-5xl text-white" data-target="5" data-suffix="">5</div>
+            <div className="font-mono text-[7px] md:text-[10px] tracking-[1px] md:tracking-[2px] uppercase text-accent font-bold">
               World Cup Wins
             </div>
           </div>
           <div className="hero-stat text-center">
-            <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="14" data-suffix="">14</div>
-            <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
+            <div className="hero-stat-num font-display text-2xl md:text-5xl text-white" data-target="14" data-suffix="">14</div>
+            <div className="font-mono text-[7px] md:text-[10px] tracking-[1px] md:tracking-[2px] uppercase text-accent font-bold">
               WC Podiums
             </div>
           </div>
           <div className="hero-stat text-center">
-            <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="6" data-suffix="x">6x</div>
-            <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
+            <div className="hero-stat-num font-display text-2xl md:text-5xl text-white" data-target="6" data-suffix="x">6x</div>
+            <div className="font-mono text-[7px] md:text-[10px] tracking-[1px] md:tracking-[2px] uppercase text-accent font-bold">
               National Champ
             </div>
           </div>
           <div className="hero-stat text-center">
-            <div className="hero-stat-num font-display text-4xl md:text-5xl text-white" data-target="24" data-suffix="">24</div>
-            <div className="font-mono text-[9px] md:text-[10px] tracking-[2px] uppercase text-accent font-bold">
+            <div className="hero-stat-num font-display text-2xl md:text-5xl text-white" data-target="24" data-suffix="">24</div>
+            <div className="font-mono text-[7px] md:text-[10px] tracking-[1px] md:tracking-[2px] uppercase text-accent font-bold">
               Years Old
             </div>
           </div>
