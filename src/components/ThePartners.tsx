@@ -85,9 +85,6 @@ export default function ThePartners() {
             </div>
           </div>
 
-          <p className="text-center text-[10px] text-white/10 mt-10 tracking-wide">
-            &copy; 2026 Carter Woods
-          </p>
         </footer>
       </div>
     </section>
