@@ -29,14 +29,29 @@ export function useScrollSpy() {
             setPastHero(index > 0);
           }
         },
-        { threshold: 0.3 }
+        { threshold: 0.1 }
       );
 
       observer.observe(el);
       observers.push(observer);
     });
 
-    return () => observers.forEach((o) => o.disconnect());
+    // Also detect when scrolled to very bottom — activate partners
+    const onScroll = () => {
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+      if (scrolledToBottom) {
+        setActiveIndex(SECTION_IDS.length - 1);
+        setPastHero(true);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      observers.forEach((o) => o.disconnect());
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return { activeIndex, pastHero, sectionIds: SECTION_IDS };
